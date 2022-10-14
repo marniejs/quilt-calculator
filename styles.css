@@ -1,0 +1,31 @@
+body {
+    background-image: linear-gradient(#F9C1CD, #b4bde5);
+    background-attachment: fixed;
+}
+
+.header {
+    font-family: Arial;
+    color: #F8F0E9;
+    font-size: 36px;
+}
+
+.subheader {
+    font-family: Arial;
+    color: #F8F0E9;
+}
+
+.form {
+    font-family: Arial;
+    color: #F8F0E9;
+}
+
+.submit {
+    font-family: Arial;
+}
+
+button {
+    background-color: #735D78;
+    color: #F8F0E9;
+    border: 0;
+    font-size: 20px;
+}
