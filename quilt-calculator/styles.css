@@ -2,6 +2,9 @@
 body {
     background-image: linear-gradient(#F9C1CD, #b4bde5);
     background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Header font */
@@ -9,28 +12,45 @@ body {
     font-family: Arial;
     color: #F8F0E9;
     font-size: 36px;
+    padding: 10px;
 }
 
 /* 'How many'... font */
 .subheader {
     font-family: Arial;
     color: #F8F0E9;
+    padding: 10px;
 }
 
-/* input fields */
+/* form */
 .form {
     font-family: Arial;
     color: #F8F0E9;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* input fields*/
+.inputs {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.width, .height {
+    padding: 10px;
 }
 
 .submit {
-
+    padding: 10px;
 }
+
 /* submit button style */
 button {
     font-family: Arial;
     background-color: #735D78;
     color: #F8F0E9;
-    border: 0;
     font-size: 20px;
 }
