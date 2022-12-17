@@ -1,29 +1,34 @@
+/* Background color */
 body {
     background-image: linear-gradient(#F9C1CD, #b4bde5);
     background-attachment: fixed;
 }
 
+/* Header font */
 .header {
     font-family: Arial;
     color: #F8F0E9;
     font-size: 36px;
 }
 
+/* 'How many'... font */
 .subheader {
     font-family: Arial;
     color: #F8F0E9;
 }
 
+/* input fields */
 .form {
     font-family: Arial;
     color: #F8F0E9;
 }
 
 .submit {
-    font-family: Arial;
-}
 
+}
+/* submit button style */
 button {
+    font-family: Arial;
     background-color: #735D78;
     color: #F8F0E9;
     border: 0;
