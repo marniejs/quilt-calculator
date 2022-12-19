@@ -11,6 +11,7 @@
 <body>
     <div class="header">QUILT BACKING CALCULATOR</div>
     <div class="subheader">How many yards of backing do you need for your quilt?</div>
+    <div class="subheader">This calculator adds a 4" seam allowance around the quilt.</div>
     <div class="form">
         <div class="inputs">
             <div class="width">
@@ -25,9 +26,15 @@
         <div class="submit">
             <button onclick="returnBacking()">SUBMIT</button>
         </div>
-        <div class="response" id="response">You will need:</div>
-        <div class="backing" id="backing"> <output id="backing"></output></div>
-        <div class="responsetwo" id="response2">yards of backing.</div>
+        <div class="result">
+            <div>Yards of backing needed:</div>
+            <div class="backing" id="backing"> <output id="backing"></output></div>
+            <div>You'll need to cut</div>
+            <div class="numPieces" id="numPieces"> <output id="numPieces"></output></div>
+            <div class="pieceOne" id="pieceOne"> <output id="pieceOne"></output></div>
+            <div class="pieceTwo" id="pieceTwo"> <output id="pieceTwo"></output></div>
+            <div class="pieceThree" id="pieceThree"> <output id="pieceThree"></output></div>
+        </div>
     </div>
 </body>
 </html>

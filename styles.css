@@ -54,3 +54,11 @@ button {
     color: #F8F0E9;
     font-size: 20px;
 }
+
+.result {
+    border: 1px solid #5C2B61;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
