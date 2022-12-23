@@ -1,4 +1,54 @@
 
+/*
+Description: Convert a decimal number into a fraction
+Author: Michaël Niessen (© 2018)
+Website: http://AssemblySys.com
+
+If you find this script useful, you can show your
+appreciation by getting Michaël a cup of coffee ;)
+https://ko-fi.com/assemblysys
+
+As long as this notice (including author name and details) is included and
+UNALTERED, this code can be used and distributed freely.
+*/
+
+function decimalToFraction(value, donly = true) {
+    let tolerance = 1.0E-6; // from how many decimals the number is rounded
+    let h1 = 1;
+    let h2 = 0;
+    let k1 = 0;
+    let k2 = 1;
+    let negative = false;
+    let i;
+
+    if (parseInt(value) == value) { // if value is an integer, stop the script
+        return value;
+    } else if (value < 0) {
+        negative = true;
+        value = -value;
+    }
+
+    if (donly) {
+        i = parseInt(value);
+        value -= i;
+    }
+
+    let b = value;
+
+    do {
+        let a = Math.floor(b);
+        console.log(a)
+        let aux = h1;
+        h1 = a * h1 + h2;
+        h2 = aux;
+        aux = k1;
+        k1 = a * k1 + k2;
+        k2 = aux;
+        b = 1 / (b - a);
+    } while (Math.abs(value - h1 / k1) > value * tolerance);
+
+    return (negative ? "-" : '') + ((donly & (i != 0)) ? i + ' ' : '') + (h1 == 0 ? '' : h1 + "/" + k1);
+}
 //This calculates the backing needed
 function returnBacking() {
     let userWidth;
@@ -8,18 +58,19 @@ function returnBacking() {
     let pieceTwo;
     let pieceThree;
 
+
     userWidth = document.getElementById("userwidth").value;
     userLength = document.getElementById("userlength").value;
 
     if (userWidth <= 34 || userLength <= 34) {
-        backing = Math.round(((parseInt(userWidth) + parseInt(userLength)) / 36) * 10) / 10;
+        backing = decimalToFraction(((parseInt(userWidth) + parseInt(userLength)) / 36));
         document.getElementById("backing").innerHTML = backing;
         pieceOne = `${parseInt(userWidth) + 8} inches by ${parseInt(userLength) + 8} inches.`
         document.getElementById("pieceOne").innerHTML = pieceOne;
     }
 
     else if (userWidth >= 35 && userWidth <= 60) {
-        backing = Math.round((((parseInt(userWidth) * 2) + 12) / 36) * 10) / 10;
+        backing = decimalToFraction((((parseInt(userWidth) * 2) + 12) / 36));
         document.getElementById("backing").innerHTML = backing;
         pieceOne = `Piece 1: ${(parseInt(userWidth) + 8)} inches by 42 inches.`
         pieceTwo = `Piece 2: ${(parseInt(userWidth) + 8)} inches by ${(parseInt(userLength) + 8) - 42} inches.`
@@ -28,7 +79,7 @@ function returnBacking() {
     }
 
     else if (userWidth >= 61 && userWidth <= 80) {
-        backing = Math.round((((userLength * 2) + 12) / 36) * 10) / 10;
+        backing = decimalToFraction((((userLength * 2) + 12) / 36));
         document.getElementById("backing").innerHTML = backing;
         pieceOne = `Piece 1: 42 inches by ${parseInt(userLength) + 8} inches.`
         pieceTwo = `Piece 2: ${(parseInt(userWidth) + 8) - 42} inches by ${parseInt(userLength) + 8} inches.`
@@ -37,7 +88,7 @@ function returnBacking() {
     }
 
     else if (userWidth >= 81 && userWidth <= 120) {
-        backing = Math.round((((userLength * 3) + 18) / 36) * 10) / 10;
+        backing = decimalToFraction((((userLength * 3) + 18) / 36));
         document.getElementById("backing").innerHTML = backing;
         pieceOne = `Piece 1: 42 inches by ${parseInt(userLength) + 8} inches.`
         pieceTwo = `Piece 2: 42 inches by ${parseInt(userLength) + 8} inches.`
