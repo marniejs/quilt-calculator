@@ -49,7 +49,9 @@ function decimalToFraction(value, donly = true) {
 
     return (negative ? "-" : '') + ((donly & (i != 0)) ? i + ' ' : '') + (h1 == 0 ? '' : h1 + "/" + k1);
 }
-//This calculates the backing needed
+
+
+//This function calculates the amount of backing needed, and the number/size of fabric pieces
 function returnBacking() {
     let userWidth;
     let userLength;
@@ -58,22 +60,24 @@ function returnBacking() {
     let pieceTwo;
     let pieceThree;
 
-
     userWidth = document.getElementById("userwidth").value;
     userLength = document.getElementById("userlength").value;
+    document.getElementById("pieceOne").innerHTML = "";
+    document.getElementById("pieceTwo").innerHTML = "";
+    document.getElementById("pieceThree").innerHTML = "";
 
     if (userWidth <= 34 || userLength <= 34) {
-        backing = decimalToFraction(((parseInt(userWidth) + parseInt(userLength)) / 36));
+        backing = decimalToFraction(((parseInt(userWidth) + parseInt(userLength)) / 36)); //yardage needed
         document.getElementById("backing").innerHTML = backing;
-        pieceOne = `${parseInt(userWidth) + 8} inches by ${parseInt(userLength) + 8} inches.`
+        pieceOne = `${parseInt(userWidth) + 8} inches x ${parseInt(userLength) + 8} inches` //size of piece 
         document.getElementById("pieceOne").innerHTML = pieceOne;
     }
 
     else if (userWidth >= 35 && userWidth <= 60) {
         backing = decimalToFraction((((parseInt(userWidth) * 2) + 12) / 36));
         document.getElementById("backing").innerHTML = backing;
-        pieceOne = `Piece 1: ${(parseInt(userWidth) + 8)} inches by 42 inches.`
-        pieceTwo = `Piece 2: ${(parseInt(userWidth) + 8)} inches by ${(parseInt(userLength) + 8) - 42} inches.`
+        pieceOne = `Piece 1: ${(parseInt(userWidth) + 8)} inches x 42 inches`
+        pieceTwo = `Piece 2: ${(parseInt(userWidth) + 8)} inches x ${(parseInt(userLength) + 8) - 42} inches`
         document.getElementById("pieceOne").innerHTML = pieceOne;
         document.getElementById("pieceTwo").innerHTML = pieceTwo;
     }
@@ -81,8 +85,8 @@ function returnBacking() {
     else if (userWidth >= 61 && userWidth <= 80) {
         backing = decimalToFraction((((userLength * 2) + 12) / 36));
         document.getElementById("backing").innerHTML = backing;
-        pieceOne = `Piece 1: 42 inches by ${parseInt(userLength) + 8} inches.`
-        pieceTwo = `Piece 2: ${(parseInt(userWidth) + 8) - 42} inches by ${parseInt(userLength) + 8} inches.`
+        pieceOne = `Piece 1: 42 inches x ${parseInt(userLength) + 8} inches`
+        pieceTwo = `Piece 2: ${(parseInt(userWidth) + 8) - 42} inches x ${parseInt(userLength) + 8} inches`
         document.getElementById("pieceOne").innerHTML = pieceOne;
         document.getElementById("pieceTwo").innerHTML = pieceTwo;
     }
@@ -90,16 +94,16 @@ function returnBacking() {
     else if (userWidth >= 81 && userWidth <= 120) {
         backing = decimalToFraction((((userLength * 3) + 18) / 36));
         document.getElementById("backing").innerHTML = backing;
-        pieceOne = `Piece 1: 42 inches by ${parseInt(userLength) + 8} inches.`
-        pieceTwo = `Piece 2: 42 inches by ${parseInt(userLength) + 8} inches.`
-        pieceThree = `Piece 3: ${(parseInt(userWidth) + 8) - 84} inches by ${parseInt(userLength) + 8} inches.`
+        pieceOne = `Piece 1: 42 inches x ${parseInt(userLength) + 8} inches.`
+        pieceTwo = `Piece 2: 42 inches x ${parseInt(userLength) + 8} inches.`
+        pieceThree = `Piece 3: ${(parseInt(userWidth) + 8) - 84} inches x ${parseInt(userLength) + 8} inches`
         document.getElementById("pieceOne").innerHTML = pieceOne;
         document.getElementById("pieceTwo").innerHTML = pieceTwo;
         document.getElementById("pieceThree").innerHTML = pieceThree;
     }
 
     else {
-        backing = 'error';
+        backing = 'Your quilt is too large for this calculator, sorry!';
         document.getElementById("backing").innerHTML = backing;
     }
 }

@@ -86,6 +86,11 @@ button {
     align-items: center;
 }
 
+.yards-header, .pieces-header {
+    font-weight: bold;
+    padding: 4px;
+}
+
 .pieceOne, .pieceTwo, .pieceThree {
     display: flex;
     flex-direction: column;
