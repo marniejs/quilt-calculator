@@ -62,11 +62,18 @@ function returnBacking() {
 
     userWidth = document.getElementById("userwidth").value;
     userLength = document.getElementById("userlength").value;
+
+    //this clears the prior output if new input is submitted
     document.getElementById("pieceOne").innerHTML = "";
     document.getElementById("pieceTwo").innerHTML = "";
     document.getElementById("pieceThree").innerHTML = "";
 
-    if (userWidth <= 34 || userLength <= 34) {
+    if (userWidth <= 0 || userLength <= 0) {
+        alert('Please enter a width and length greater than 0');
+    }
+
+
+    else if (userWidth <= 34 || userLength <= 34) {
         backing = decimalToFraction(((parseInt(userWidth) + parseInt(userLength)) / 36)); //yardage needed
         document.getElementById("backing").innerHTML = backing;
         pieceOne = `${parseInt(userWidth) + 8} inches x ${parseInt(userLength) + 8} inches` //size of piece 
@@ -75,7 +82,7 @@ function returnBacking() {
 
     else if (userWidth >= 35 && userWidth <= 60) {
         backing = decimalToFraction((((parseInt(userWidth) * 2) + 12) / 36));
-        document.getElementById("backing").innerHTML = backing;
+        document.getElementById("backing").innerHTML = backing; 
         pieceOne = `Piece 1: ${(parseInt(userWidth) + 8)} inches x 42 inches`
         pieceTwo = `Piece 2: ${(parseInt(userWidth) + 8)} inches x ${(parseInt(userLength) + 8) - 42} inches`
         document.getElementById("pieceOne").innerHTML = pieceOne;
@@ -103,7 +110,6 @@ function returnBacking() {
     }
 
     else {
-        backing = 'Your quilt is too large for this calculator, sorry!';
-        document.getElementById("backing").innerHTML = backing;
+        alert('Your quilt is too large for this calculator, sorry!');
     }
 }
